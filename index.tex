@@ -1,0 +1,2044 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={SQL for R},
+  pdfauthor={Edgar Treischl},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{SQL for R}
+\author{Edgar Treischl}
+\date{4/29/23}
+
+\begin{document}
+\maketitle
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, sharp corners, interior hidden, breakable, boxrule=0pt]}{\end{tcolorbox}}\fi
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\bookmarksetup{startatroot}
+
+\hypertarget{preface}{%
+\chapter*{Preface}\label{preface}}
+\addcontentsline{toc}{chapter}{Preface}
+
+\markboth{Preface}{Preface}
+
+This is a Quarto book.
+
+To learn more about Quarto books visit
+\url{https://quarto.org/docs/books}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{introduction}{%
+\chapter{Introduction}\label{introduction}}
+
+The blog \emph{learning SQL the badass way} shows you the basic commands
+to manage tables and data with SQL. I assume that you are familiar with
+R (or other programming languages) to manipulate data. For this reason,
+this page only summarizes main idiosyncrasies of SQL, not concepts that
+you probably know from any other programming experience. I made the
+experience that learning new things always takes a lot of time and often
+I have the impression that many courses are designed without taking your
+personal experience into account. What a surprise, I can read and write
+some SQL code even I have no idea what SQL does and I guess you can too!
+This blog is the result of this experience and gives a quick and dirty
+introduction, assuming that you have some previous coding experience and
+I do not have to explain why we want to wrangle data in the first place.
+If you do not have this impression or if you want to learn SQL in a
+proper way, close this blog. Go and find your way to a real SQL course
+or some other resources. However, if you are bored from long
+introduction what data is, why we need to learn how to wrangle data or
+other common aspects that come along the data science journey, feel free
+to join my SQL journey.
+
+The biggest mistake trying to learn SQL first. If you ever opened a book
+that introduces SQL (or any other programming language) to will find
+several chapters that outline you what SQL (structured query language)
+is. An explanation from the Wikipedia page should be sufficient: ``SQL a
+domain-specific language used in programming and designed for managing
+data held in a relational database management system (RDBMS), or for
+stream processing in a relational data stream management system
+(RDSMS)''. Thus, in a nutshell we can remember that SQL is a language to
+manage data (tables) in databases. The next chapters shows you how to
+setup the corresponding software and the database. I'll not do that in
+this blog because setting up a database on your own computer does not
+make much sense because there are easier ways for the first steps in SQL
+especially if you are a R user.
+
+In case you do not have access to a SQL database: This page was built
+with \texttt{RMarkdown} and includes some SQL snippets with the
+\texttt{DBI} package. All you have to do is install the package, setup
+the connection and include your SQL code directly in your RMarkdown
+document or your R script. Thus, in our case there is no database
+installed, we can make use of the the local memory to simulate a
+database, save a table (data frame) and run SQL commands directly as a
+code chunk via our R script. Checkout the databases page from
+\href{https://db.rstudio.com/dbi/}{RStudio} for more information.
+Furthermore, I hope you are familiar with the \texttt{mtcars} and the
+\texttt{iris} data if you want to reproduce these first SQL steps. Both
+are implemented in R, but it does not matter if you not familiar with
+these data sets. I picked them because a lot of people know them and
+this blog shows you the first basic SQL commands how retrieve and work
+with data.
+
+\hypertarget{select}{%
+\section{Select}\label{select}}
+
+\begin{itemize}
+\tightlist
+\item
+  Use select to retrieve a table or a column from a table
+\item
+  You can select a single column from a table
+\item
+  Or select the entire table (data frame) with the wildcard \texttt{*}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ mtcars;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrrrrrrrrrr@{}}
+\caption{Displaying records 1 - 10}\tabularnewline
+\toprule()
+mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
+\midrule()
+\endfirsthead
+\toprule()
+mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
+\midrule()
+\endhead
+21.0 & 6 & 160.0 & 110 & 3.90 & 2.620 & 16.46 & 0 & 1 & 4 & 4 \\
+21.0 & 6 & 160.0 & 110 & 3.90 & 2.875 & 17.02 & 0 & 1 & 4 & 4 \\
+22.8 & 4 & 108.0 & 93 & 3.85 & 2.320 & 18.61 & 1 & 1 & 4 & 1 \\
+21.4 & 6 & 258.0 & 110 & 3.08 & 3.215 & 19.44 & 1 & 0 & 3 & 1 \\
+18.7 & 8 & 360.0 & 175 & 3.15 & 3.440 & 17.02 & 0 & 0 & 3 & 2 \\
+18.1 & 6 & 225.0 & 105 & 2.76 & 3.460 & 20.22 & 1 & 0 & 3 & 1 \\
+14.3 & 8 & 360.0 & 245 & 3.21 & 3.570 & 15.84 & 0 & 0 & 3 & 4 \\
+24.4 & 4 & 146.7 & 62 & 3.69 & 3.190 & 20.00 & 1 & 0 & 4 & 2 \\
+22.8 & 4 & 140.8 & 95 & 3.92 & 3.150 & 22.90 & 1 & 0 & 4 & 2 \\
+19.2 & 6 & 167.6 & 123 & 3.92 & 3.440 & 18.30 & 1 & 0 & 4 & 4 \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Limit the output by providing the number of lines
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT}\NormalTok{ mpg, disp }\KeywordTok{FROM}\NormalTok{ mtcars }\KeywordTok{LIMIT} \DecValTok{5}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+mpg & disp \\
+\midrule()
+\endfirsthead
+\toprule()
+mpg & disp \\
+\midrule()
+\endhead
+21.0 & 160 \\
+21.0 & 160 \\
+22.8 & 108 \\
+21.4 & 258 \\
+18.7 & 360 \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  You can also insert a starting point that skips some observations. For
+  instance, \texttt{OFFSET\ 10} will skip the first ten table entries
+\item
+  You must use quotations marks if the column contains special
+  characters (like
+  \texttt{\textquotesingle{}Petal.Width\textquotesingle{}} from iris
+  data)
+\end{itemize}
+
+\hypertarget{where}{%
+\section{Where}\label{where}}
+
+\begin{itemize}
+\tightlist
+\item
+  Define what you want to select with the \texttt{Where} option (SQL
+  folks say clause)
+\item
+  For instance, the variable \texttt{am} is a binary indicator (0/1) and
+  you can use \emph{where} to select data only if \texttt{am\ =\ 0}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ mtcars }\KeywordTok{WHERE}\NormalTok{ am }\OperatorTok{=} \DecValTok{0} \KeywordTok{LIMIT} \DecValTok{5}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrrrrrrrrrr@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
+\midrule()
+\endfirsthead
+\toprule()
+mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
+\midrule()
+\endhead
+21.4 & 6 & 258.0 & 110 & 3.08 & 3.215 & 19.44 & 1 & 0 & 3 & 1 \\
+18.7 & 8 & 360.0 & 175 & 3.15 & 3.440 & 17.02 & 0 & 0 & 3 & 2 \\
+18.1 & 6 & 225.0 & 105 & 2.76 & 3.460 & 20.22 & 1 & 0 & 3 & 1 \\
+14.3 & 8 & 360.0 & 245 & 3.21 & 3.570 & 15.84 & 0 & 0 & 3 & 4 \\
+24.4 & 4 & 146.7 & 62 & 3.69 & 3.190 & 20.00 & 1 & 0 & 4 & 2 \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Remember to use quotation marks if you try to use \emph{where} with
+  non-numerical values from:
+  e.g.~\texttt{!=\ \textquotesingle{}label\textquotesingle{}}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ iris }\KeywordTok{WHERE}\NormalTok{ Species }\OperatorTok{=} \OtherTok{"virginica"}  \KeywordTok{LIMIT} \DecValTok{5}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrrrl@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\
+\midrule()
+\endfirsthead
+\toprule()
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species \\
+\midrule()
+\endhead
+6.3 & 3.3 & 6.0 & 2.5 & virginica \\
+5.8 & 2.7 & 5.1 & 1.9 & virginica \\
+7.1 & 3.0 & 5.9 & 2.1 & virginica \\
+6.3 & 2.9 & 5.6 & 1.8 & virginica \\
+6.5 & 3.0 & 5.8 & 2.2 & virginica \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{count}{%
+\section{Count}\label{count}}
+
+\begin{itemize}
+\tightlist
+\item
+  Count counts cases!
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \FunctionTok{COUNT}\NormalTok{(}\OperatorTok{*}\NormalTok{) }\KeywordTok{FROM}\NormalTok{ mtcars;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}r@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+COUNT(*) \\
+\midrule()
+\endfirsthead
+\toprule()
+COUNT(*) \\
+\midrule()
+\endhead
+32 \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  We can count subgroups with the \texttt{WHERE} clause:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \FunctionTok{COUNT}\NormalTok{(am) }\KeywordTok{FROM}\NormalTok{ mtcars }\KeywordTok{WHERE}\NormalTok{ am }\OperatorTok{!=} \DecValTok{0}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}r@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+COUNT(am) \\
+\midrule()
+\endfirsthead
+\toprule()
+COUNT(am) \\
+\midrule()
+\endhead
+13 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{distinct}{%
+\section{DISTINCT}\label{distinct}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Distinct} can be used to find distinct values. For instance,
+  there are three different Species in the iris data, and distinct helps
+  you to distract them:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \KeywordTok{DISTINCT}\NormalTok{ Species }\KeywordTok{FROM}\NormalTok{ iris}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}l@{}}
+\caption{3 records}\tabularnewline
+\toprule()
+Species \\
+\midrule()
+\endfirsthead
+\toprule()
+Species \\
+\midrule()
+\endhead
+setosa \\
+versicolor \\
+virginica \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  As in other programming languages, we can combine several commands.
+  For instance, we can \texttt{COUNT} how many \texttt{Distinct} species
+  the iris data has:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \FunctionTok{COUNT}\NormalTok{ (}\KeywordTok{DISTINCT}\NormalTok{ Species) }\KeywordTok{FROM}\NormalTok{ iris}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}r@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+COUNT (DISTINCT Species) \\
+\midrule()
+\endfirsthead
+\toprule()
+COUNT (DISTINCT Species) \\
+\midrule()
+\endhead
+3 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{insert-values}{%
+\section{Insert Values}\label{insert-values}}
+
+\begin{itemize}
+\item
+  Next, I use a small data set (df) to illustrate how to \emph{insert
+  values}, \emph{make updates}, and \emph{delete cases}
+\item
+  My toy data set \texttt{df} has two observations with three variables:
+  \texttt{x,y,z}
+\item
+  Never mind if you do not know what a \texttt{tribble} is, it is just a
+  command to create data
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{tribble}\NormalTok{(}
+  \SpecialCharTok{\textasciitilde{}}\NormalTok{x, }\SpecialCharTok{\textasciitilde{}}\NormalTok{y,  }\SpecialCharTok{\textasciitilde{}}\NormalTok{z,}
+  \StringTok{"a"}\NormalTok{, }\DecValTok{2}\NormalTok{,  }\FloatTok{3.6}\NormalTok{,}
+  \StringTok{"b"}\NormalTok{, }\DecValTok{1}\NormalTok{,  }\FloatTok{8.5}
+\NormalTok{)}
+\NormalTok{df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 2 x 3
+  x         y     z
+  <chr> <dbl> <dbl>
+1 a         2   3.6
+2 b         1   8.5
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Now, we can insert new values into \texttt{df} by providing a list of
+  the columns you want to fill in with values for each column:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{INSERT} \KeywordTok{INTO}\NormalTok{ df (x, y, z) }\KeywordTok{VALUES}\NormalTok{(}\StringTok{\textquotesingle{}c\textquotesingle{}}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+Let's see whether it worked:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrr@{}}
+\caption{3 records}\tabularnewline
+\toprule()
+x & y & z \\
+\midrule()
+\endfirsthead
+\toprule()
+x & y & z \\
+\midrule()
+\endhead
+a & 2 & 3.6 \\
+b & 1 & 8.5 \\
+c & 3 & 1.0 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{updates}{%
+\section{Updates}\label{updates}}
+
+\begin{itemize}
+\tightlist
+\item
+  Make updates for single (or multiple) values
+\item
+  For instance, we can update the variable z and set \texttt{z\ =\ 77}
+  for a certain level of another variable:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{UPDATE}\NormalTok{ df }\KeywordTok{SET}\NormalTok{ z }\OperatorTok{=} \DecValTok{77} \KeywordTok{WHERE}\NormalTok{ x }\OperatorTok{=}\StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Take care, without the \texttt{WHERE} clause all observation would get
+  the new value!
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrr@{}}
+\caption{3 records}\tabularnewline
+\toprule()
+x & y & z \\
+\midrule()
+\endfirsthead
+\toprule()
+x & y & z \\
+\midrule()
+\endhead
+a & 2 & 3.6 \\
+b & 1 & 77.0 \\
+c & 3 & 1.0 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{delete}{%
+\section{Delete}\label{delete}}
+
+\begin{itemize}
+\item
+  We can drop or delete observations, but of course we should take care
+  since we probably do not want to delete the entire table, just for
+  some implausible values
+\item
+  For this reason we use the \texttt{WHERE} clause again, for instance,
+  to get rid of second row of the toy data set:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{DELETE} \KeywordTok{from}\NormalTok{ df }\KeywordTok{WHERE}\NormalTok{ x }\OperatorTok{=} \StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrr@{}}
+\caption{2 records}\tabularnewline
+\toprule()
+x & y & z \\
+\midrule()
+\endfirsthead
+\toprule()
+x & y & z \\
+\midrule()
+\endhead
+a & 2 & 3.6 \\
+c & 3 & 1.0 \\
+\bottomrule()
+\end{longtable}
+
+In summary, in SQL we have to select a table from the database, specify
+conditions with the where clause. We can use count and distinct to get a
+first impression of the data. Furthermore, it is all about table.
+Sometimes we have to insert values, a really vague concept if you are
+use to work with data, but from a SQL you give your database a update,
+you are really right in front of the data or imagine that stream of new
+data needs an update. If that something you have to get used to it,
+don't be afraid, me too.
+
+\bookmarksetup{startatroot}
+
+\hypertarget{data-management}{%
+\chapter{Data management}\label{data-management}}
+
+This is the second blog post from ``Learn SQL the badass way''. I
+outlined the scope of the blog in the first blog entry where I explained
+why I set the scope to R users and people with some programming
+languages. You may not find what you are looking for if you are not
+familiar with R or if you do not have any other experience to work with
+data, because I focus on the data management part in this blog.
+
+Before we get in touch with new SQL commands, we have to learn some SQL
+vocabulary. As in other languages, we have to learn some basic
+vocabulary to advance our SQL skills. Let's say we have a small
+collection of tables about books. In the \texttt{author} table we store
+information about the book \texttt{author}(e.g.~first name, second name,
+etc); in the \texttt{book} table contains information about each book
+(e.g.~genre etc); and the \texttt{sales} table summarizes the sales data
+for each book. How do we manage all of these tables and the dependencies
+in SQL?
+
+Sometimes you encounter a diagram to display how each table is related
+to each other and we can think of all the independent tables as a
+collection of tables and we have to figure out how they are related. A
+entity relationship diagram (ERD) will help you to see the relation of
+each table, it displays the collection of entities and attributes.
+
+In the SQL world, \emph{entities} are independent objects. For instance,
+the book table is a independent object because it exits next to other
+entities of our collection. Entities have \emph{attributes} or
+properties. For instance, the book table contains title, subtitle, book
+id and more attributes. Thus, entities refer to tables (or in my world
+data frame) of our collection and attributes refer to columns, or I
+would say variables, in the table.
+
+Furthermore, we can differentiate between primary and foreign keys in
+the tables:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Primary key}: Is a unique indicator that helps us to match
+  tables (e.g.~a unique author ID)
+\item
+  \emph{Foreign keys}: Is a primary key that is defined in other table
+  to create a link between tables (Book ID in Book table and the sales
+  table)
+\end{itemize}
+
+We may also differentiate what information a attribute stores. Some
+common data formats are:
+
+\begin{itemize}
+\tightlist
+\item
+  Char (for characters)
+\item
+  Varchar (for variable character length)
+\item
+  Numeric (Integer, time)
+\end{itemize}
+
+\hypertarget{types-of-sql-statements}{%
+\section{Types of SQL Statements}\label{types-of-sql-statements}}
+
+In the SQL world, we can ultimately distinguish between the data
+definition and manipulation language:
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Data Definition Language (DDL)}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Commands from the DDL are used to define, change, or drop tables
+    (database)
+  \item
+    SQL examples: Create, Alter, Truncate, Drop
+  \end{itemize}
+\item
+  \emph{Data Manipulation Language (DML)}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    DML is used to read and modify data in tables
+  \item
+    Those operations are sometimes named as CRUD operations and we
+    learned them in the last blog: \emph{Create, Read, Update, and
+    Delete} rows in a table
+  \item
+    SQL examples: INSERT, SELECT, UPDATE, DELETE
+  \end{itemize}
+\end{itemize}
+
+Now, let's put some of these concepts into practice:
+
+\hypertarget{create}{%
+\section{CREATE}\label{create}}
+
+\begin{itemize}
+\tightlist
+\item
+  You can create new tables with \texttt{CREATE\ TABLE} command. It
+  works in three steps. You have to provide a name for your table, each
+  column needs a name, and you have to specify which kind of information
+  will be stored (e.g.~numerical values, characters) in the column
+\item
+  The following command creates a toy table with for petsales with five
+  variables:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ PETSALE (}
+    \KeywordTok{ID} \DataTypeTok{INTEGER} \KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{    PET }\DataTypeTok{CHAR}\NormalTok{(}\DecValTok{20}\NormalTok{),}
+\NormalTok{    SALEPRICE }\DataTypeTok{DECIMAL}\NormalTok{(}\DecValTok{6}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+\NormalTok{    PROFIT }\DataTypeTok{DECIMAL}\NormalTok{(}\DecValTok{6}\NormalTok{,}\DecValTok{2}\NormalTok{),}
+\NormalTok{    SALEDATE }\DataTypeTok{DATE}
+\NormalTok{    );}
+\end{Highlighting}
+\end{Shaded}
+
+As the output illustrates, we can add options to create the table:
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{ID} variable is an integer that does not accept zero, or
+  in other words: \texttt{NOT\ NULL}
+\item
+  The column PET is generated to store to character string
+\item
+  The column SALEDATE stores dates
+\item
+  And we could also set a primary key with the clause:
+  \texttt{PRIMARY\ KEY}
+\item
+  A second example
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{CREATE} \KeywordTok{TABLE}\NormalTok{ PET (}
+    \KeywordTok{ID} \DataTypeTok{INTEGER} \KeywordTok{NOT} \KeywordTok{NULL}\NormalTok{,}
+\NormalTok{    ANIMAL }\DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{20}\NormalTok{),}
+\NormalTok{    QUANTITY }\DataTypeTok{INTEGER}
+\NormalTok{    );}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  So far, both tables do not contain any values. With
+  \texttt{INSERT\ INTO}, we fill the table with corresponding values:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{INSERT} \KeywordTok{INTO}\NormalTok{ PETSALE }\KeywordTok{VALUES}
+\NormalTok{    (}\DecValTok{1}\NormalTok{,}\StringTok{\textquotesingle{}Cat\textquotesingle{}}\NormalTok{,}\FloatTok{450.09}\NormalTok{,}\FloatTok{100.47}\NormalTok{,}\StringTok{\textquotesingle{}2018{-}05{-}29\textquotesingle{}}\NormalTok{),}
+\NormalTok{    (}\DecValTok{2}\NormalTok{,}\StringTok{\textquotesingle{}Dog\textquotesingle{}}\NormalTok{,}\FloatTok{666.66}\NormalTok{,}\FloatTok{150.76}\NormalTok{,}\StringTok{\textquotesingle{}2018{-}06{-}01\textquotesingle{}}\NormalTok{),}
+\NormalTok{    (}\DecValTok{3}\NormalTok{,}\StringTok{\textquotesingle{}Parrot\textquotesingle{}}\NormalTok{,}\FloatTok{50.00}\NormalTok{,}\FloatTok{8.9}\NormalTok{,}\StringTok{\textquotesingle{}2018{-}06{-}04\textquotesingle{}}\NormalTok{),}
+\NormalTok{    (}\DecValTok{4}\NormalTok{,}\StringTok{\textquotesingle{}Hamster\textquotesingle{}}\NormalTok{,}\FloatTok{60.60}\NormalTok{,}\DecValTok{12}\NormalTok{,}\StringTok{\textquotesingle{}2018{-}06{-}11\textquotesingle{}}\NormalTok{),}
+\NormalTok{    (}\DecValTok{5}\NormalTok{,}\StringTok{\textquotesingle{}Goldfish\textquotesingle{}}\NormalTok{,}\FloatTok{48.48}\NormalTok{,}\FloatTok{3.5}\NormalTok{,}\StringTok{\textquotesingle{}2018{-}06{-}14\textquotesingle{}}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  And for the second table:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{INSERT} \KeywordTok{INTO}\NormalTok{ PET }\KeywordTok{VALUES}
+\NormalTok{    (}\DecValTok{1}\NormalTok{,}\StringTok{\textquotesingle{}Cat\textquotesingle{}}\NormalTok{,}\DecValTok{3}\NormalTok{),}
+\NormalTok{    (}\DecValTok{2}\NormalTok{,}\StringTok{\textquotesingle{}Dog\textquotesingle{}}\NormalTok{,}\DecValTok{4}\NormalTok{),}
+\NormalTok{    (}\DecValTok{3}\NormalTok{,}\StringTok{\textquotesingle{}Hamster\textquotesingle{}}\NormalTok{,}\DecValTok{2}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+As we learned in the last session, we can use \texttt{SELECT} to check
+whether it worked:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ PET;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llr@{}}
+\caption{3 records}\tabularnewline
+\toprule()
+ID & ANIMAL & QUANTITY \\
+\midrule()
+\endfirsthead
+\toprule()
+ID & ANIMAL & QUANTITY \\
+\midrule()
+\endhead
+1 & Cat & 3 \\
+2 & Dog & 4 \\
+3 & Hamster & 2 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{alter-table}{%
+\section{ALTER TABLE}\label{alter-table}}
+
+\begin{itemize}
+\tightlist
+\item
+  We use the \texttt{ALTER\ TABLE} statement to add, delete, or modify
+  columns. For instance:
+\item
+  \texttt{ADD\ COLUMN,\ DROP\ COLUMN;\ ALTER\ COLUMN;\ RENAME\ COLUMN}
+\end{itemize}
+
+First: \texttt{ADD\ COLUMN}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ALTER} \KeywordTok{TABLE}\NormalTok{ PETSALE}
+\KeywordTok{ADD} \KeywordTok{COLUMN}\NormalTok{ QUANTITY }\DataTypeTok{INTEGER}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ PETSALE;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llrrlr@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+ID & PET & SALEPRICE & PROFIT & SALEDATE & QUANTITY \\
+\midrule()
+\endfirsthead
+\toprule()
+ID & PET & SALEPRICE & PROFIT & SALEDATE & QUANTITY \\
+\midrule()
+\endhead
+1 & Cat & 450.09 & 100.47 & 2018-05-29 & NA \\
+2 & Dog & 666.66 & 150.76 & 2018-06-01 & NA \\
+3 & Parrot & 50.00 & 8.90 & 2018-06-04 & NA \\
+4 & Hamster & 60.60 & 12.00 & 2018-06-11 & NA \\
+5 & Goldfish & 48.48 & 3.50 & 2018-06-14 & NA \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Again, fill in your values
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{UPDATE}\NormalTok{ PETSALE }\KeywordTok{SET}\NormalTok{ QUANTITY }\OperatorTok{=} \DecValTok{9} \KeywordTok{WHERE} \KeywordTok{ID} \OperatorTok{=} \DecValTok{1}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{UPDATE}\NormalTok{ PETSALE }\KeywordTok{SET}\NormalTok{ QUANTITY }\OperatorTok{=} \DecValTok{24} \KeywordTok{WHERE} \KeywordTok{ID} \OperatorTok{=} \DecValTok{5}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Check whether it worked
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ PETSALE;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llrrlr@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+ID & PET & SALEPRICE & PROFIT & SALEDATE & QUANTITY \\
+\midrule()
+\endfirsthead
+\toprule()
+ID & PET & SALEPRICE & PROFIT & SALEDATE & QUANTITY \\
+\midrule()
+\endhead
+1 & Cat & 450.09 & 100.47 & 2018-05-29 & 9 \\
+2 & Dog & 666.66 & 150.76 & 2018-06-01 & NA \\
+3 & Parrot & 50.00 & 8.90 & 2018-06-04 & NA \\
+4 & Hamster & 60.60 & 12.00 & 2018-06-11 & NA \\
+5 & Goldfish & 48.48 & 3.50 & 2018-06-14 & 24 \\
+\bottomrule()
+\end{longtable}
+
+Second: \texttt{DROP\ COLUMN}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ALTER} \KeywordTok{TABLE}\NormalTok{ PETSALE}
+\KeywordTok{DROP} \KeywordTok{COLUMN}\NormalTok{ PROFIT;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ PETSALE;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llrlr@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+ID & PET & SALEPRICE & SALEDATE & QUANTITY \\
+\midrule()
+\endfirsthead
+\toprule()
+ID & PET & SALEPRICE & SALEDATE & QUANTITY \\
+\midrule()
+\endhead
+1 & Cat & 450.09 & 2018-05-29 & 9 \\
+2 & Dog & 666.66 & 2018-06-01 & NA \\
+3 & Parrot & 50.00 & 2018-06-04 & NA \\
+4 & Hamster & 60.60 & 2018-06-11 & NA \\
+5 & Goldfish & 48.48 & 2018-06-14 & 24 \\
+\bottomrule()
+\end{longtable}
+
+Third: \texttt{ALTER\ COLUMN}
+
+\begin{itemize}
+\tightlist
+\item
+  We can change the data type, for instance, to increase the length of a
+  character variable to VARCHAR(20) with \texttt{ALTER\ COLUMN}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ALTER} \KeywordTok{TABLE}\NormalTok{ PETSALE}
+\KeywordTok{ALTER} \KeywordTok{COLUMN}\NormalTok{ PET }\KeywordTok{SET} \KeywordTok{DATA} \KeywordTok{TYPE} \DataTypeTok{VARCHAR}\NormalTok{(}\DecValTok{20}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ PETSALE;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llrlr@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+ID & PET & SALEPRICE & SALEDATE & QUANTITY \\
+\midrule()
+\endfirsthead
+\toprule()
+ID & PET & SALEPRICE & SALEDATE & QUANTITY \\
+\midrule()
+\endhead
+1 & Cat & 450.09 & 2018-05-29 & 9 \\
+2 & Dog & 666.66 & 2018-06-01 & NA \\
+3 & Parrot & 50.00 & 2018-06-04 & NA \\
+4 & Hamster & 60.60 & 2018-06-11 & NA \\
+5 & Goldfish & 48.48 & 2018-06-14 & 24 \\
+\bottomrule()
+\end{longtable}
+
+Forth: \texttt{RENAME\ COLUMN}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \texttt{RENAME\ COLUMN} to change \emph{to} a new name:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ALTER} \KeywordTok{TABLE}\NormalTok{ PETSALE}
+\KeywordTok{RENAME} \KeywordTok{COLUMN}\NormalTok{ PET }\KeywordTok{TO}\NormalTok{ ANIMAL;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ PETSALE;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llrlr@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+ID & ANIMAL & SALEPRICE & SALEDATE & QUANTITY \\
+\midrule()
+\endfirsthead
+\toprule()
+ID & ANIMAL & SALEPRICE & SALEDATE & QUANTITY \\
+\midrule()
+\endhead
+1 & Cat & 450.09 & 2018-05-29 & 9 \\
+2 & Dog & 666.66 & 2018-06-01 & NA \\
+3 & Parrot & 50.00 & 2018-06-04 & NA \\
+4 & Hamster & 60.60 & 2018-06-11 & NA \\
+5 & Goldfish & 48.48 & 2018-06-14 & 24 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{truncate}{%
+\section{Truncate}\label{truncate}}
+
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{TRUNCATE} statement will remove all(!) rows from an
+  existing table, just like the one we created in the beginning,
+  however, it does not delete the table itself.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{TRUNCATE} \KeywordTok{TABLE}\NormalTok{ PET }\KeywordTok{IMMEDIATE}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+Caution: \texttt{DROP\ TABLE\ tablename;} drops the entire table!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{DROP} \KeywordTok{TABLE}\NormalTok{ PETSALE;}
+\end{Highlighting}
+\end{Shaded}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{calculations}{%
+\chapter{Calculations}\label{calculations}}
+
+Do you really want to ``learn SQL the badass way''? I outlined the scope
+of the blog in the first blog entry where I explained why I set the
+scope to R users and people with some programming languages. You may not
+find what you are looking for if you are not familiar with R or if you
+do not have any other experience to work with data, because I focus on
+the data management part in this blog. Thus, I hope you find some
+helpful ressources to learn SQL, but I focus on data wrangling aspects,
+without explaining basic concepts to handle data.
+
+In this session we learn how to use string patterns and ranges to search
+data. We will learn how to sort and group data to display result.
+Moreover, we practice composing nested queries and execute select
+statements to access data from multiple tables. For this reason I
+created a simple table that contains some attributes (y, z, id) about
+countries:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df ;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{4 records}\tabularnewline
+\toprule()
+country & y & z & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id \\
+\midrule()
+\endhead
+Germany & 2 & 3.6 & 1 \\
+Austria & 1 & 8.5 & 2 \\
+Brazil & 4 & 2.5 & 3 \\
+Brazil & 3 & 3.5 & 3 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{string-values-ranges-and-set-of-values}{%
+\section{String values, ranges and set of
+values}\label{string-values-ranges-and-set-of-values}}
+
+We can use strings and the WHERE clause to search for specific
+observations. For instance,
+\texttt{WHERE\ countryname\ LIKE\ \textquotesingle{}A\%\textquotesingle{}}
+means that we search for country name column that start with the
+corresponding string. And we can use \texttt{\%} as a wildcard
+character:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df }\KeywordTok{WHERE}\NormalTok{ country }\KeywordTok{LIKE} \StringTok{\textquotesingle{}A\%\textquotesingle{}}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+country & y & z & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id \\
+\midrule()
+\endhead
+Austria & 1 & 8.5 & 2 \\
+\bottomrule()
+\end{longtable}
+
+Use a range to select entries that depending on some criteria
+(\textgreater{} and \textless). In SQL, we specify
+\texttt{WHERE\ values\ are\ between\ 100\ and\ 200}. Keep in mind that
+values are inclusive within the range. For instance, we can use the
+mtcars dataset and restrict the table with cars that have a horsepower
+(hp) between 100 and 200, we can even use an \texttt{AND} to restrict to
+cars with a manual transmission (AM = 1)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ mtcars}
+\KeywordTok{where}\NormalTok{ (hp }\KeywordTok{BETWEEN} \DecValTok{100} \KeywordTok{and} \DecValTok{200}\NormalTok{) }\KeywordTok{and}\NormalTok{ AM }\OperatorTok{=} \DecValTok{1}\NormalTok{ ;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrrrrrrrrrr@{}}
+\caption{5 records}\tabularnewline
+\toprule()
+mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
+\midrule()
+\endfirsthead
+\toprule()
+mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
+\midrule()
+\endhead
+21.0 & 6 & 160.0 & 110 & 3.90 & 2.620 & 16.46 & 0 & 1 & 4 & 4 \\
+21.0 & 6 & 160.0 & 110 & 3.90 & 2.875 & 17.02 & 0 & 1 & 4 & 4 \\
+30.4 & 4 & 95.1 & 113 & 3.77 & 1.513 & 16.90 & 1 & 1 & 5 & 2 \\
+19.7 & 6 & 145.0 & 175 & 3.62 & 2.770 & 15.50 & 0 & 1 & 5 & 6 \\
+21.4 & 4 & 121.0 & 109 & 4.11 & 2.780 & 18.60 & 1 & 1 & 4 & 2 \\
+\bottomrule()
+\end{longtable}
+
+Another option gives us the \texttt{IN} operator. We can select columns
+by providing a list and the \texttt{IN} operator. As the next example
+shows, we select only those observations that match the provided list of
+the \texttt{IN} operator:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df }\KeywordTok{WHERE}\NormalTok{ country }\KeywordTok{IN}\NormalTok{ (}\StringTok{\textquotesingle{}Brazil\textquotesingle{}}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{2 records}\tabularnewline
+\toprule()
+country & y & z & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id \\
+\midrule()
+\endhead
+Brazil & 4 & 2.5 & 3 \\
+Brazil & 3 & 3.5 & 3 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{sorting-result-sets}{%
+\subsection{Sorting Result Sets}\label{sorting-result-sets}}
+
+Sometimes we need to sort the entries alphabetically and we can do that
+with the \texttt{ORDER\ BY} clause. For instance,
+\texttt{ORDER\ BY\ country}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df }\KeywordTok{ORDER} \KeywordTok{BY}\NormalTok{ country;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{4 records}\tabularnewline
+\toprule()
+country & y & z & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id \\
+\midrule()
+\endhead
+Austria & 1 & 8.5 & 2 \\
+Brazil & 4 & 2.5 & 3 \\
+Brazil & 3 & 3.5 & 3 \\
+Germany & 2 & 3.6 & 1 \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  By default, the entries are ordered in an ascending order, but we can
+  sort in a descending with \texttt{DESC} option as well:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df }\KeywordTok{ORDER} \KeywordTok{BY}\NormalTok{ country }\KeywordTok{DESC}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{4 records}\tabularnewline
+\toprule()
+country & y & z & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id \\
+\midrule()
+\endhead
+Germany & 2 & 3.6 & 1 \\
+Brazil & 4 & 2.5 & 3 \\
+Brazil & 3 & 3.5 & 3 \\
+Austria & 1 & 8.5 & 2 \\
+\bottomrule()
+\end{longtable}
+
+Sometimes we have several observations per unit or any kind of
+structural order, which is why we may want to order a specific variable.
+We can sort the data by providing the number of the column we want to
+use a sort. As the next example shows, we can use y (or 2) to sort the
+data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \OperatorTok{*} \KeywordTok{FROM}\NormalTok{ df }\KeywordTok{ORDER} \KeywordTok{BY}\NormalTok{ y;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{4 records}\tabularnewline
+\toprule()
+country & y & z & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id \\
+\midrule()
+\endhead
+Austria & 1 & 8.5 & 2 \\
+Germany & 2 & 3.6 & 1 \\
+Brazil & 3 & 3.5 & 3 \\
+Brazil & 4 & 2.5 & 3 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{grouping-result-sets}{%
+\subsection{Grouping result sets}\label{grouping-result-sets}}
+
+To work with data, we have to get rid of duplicates and often it is much
+more easier if we restrict result set (data frame). To exclude
+duplicates we can use the \texttt{distinct()} command, which returns
+only distinct countries in our example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT} \KeywordTok{distinct}\NormalTok{(country) }\KeywordTok{FROM}\NormalTok{ df ;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}l@{}}
+\caption{3 records}\tabularnewline
+\toprule()
+country \\
+\midrule()
+\endfirsthead
+\toprule()
+country \\
+\midrule()
+\endhead
+Germany \\
+Austria \\
+Brazil \\
+\bottomrule()
+\end{longtable}
+
+In a similar fashion, maybe we have to clarify how many observations do
+we have per group? Or in our case, how many entries come from the same
+country and how often appears each level? In such a case we can count
+the county column and use the \texttt{group\ by} clause:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT}\NormalTok{ country, }\FunctionTok{count}\NormalTok{ (country) }\KeywordTok{from}\NormalTok{ df }\KeywordTok{group} \KeywordTok{by}\NormalTok{ country;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{3 records}\tabularnewline
+\toprule()
+country & count (country) \\
+\midrule()
+\endfirsthead
+\toprule()
+country & count (country) \\
+\midrule()
+\endhead
+Austria & 1 \\
+Brazil & 2 \\
+Germany & 1 \\
+\bottomrule()
+\end{longtable}
+
+As the last output showed, the count functions literally counts, but SQL
+does not give it a name, it simply displays what it does. We can change
+this ugly behaviour by providing a variable name and tell SQL how the
+column should be listed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT}\NormalTok{ country, }\FunctionTok{count}\NormalTok{ (country) }\KeywordTok{AS}\NormalTok{ Count\_Variable }\KeywordTok{from}\NormalTok{ df }\KeywordTok{group} \KeywordTok{by}\NormalTok{ country;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{3 records}\tabularnewline
+\toprule()
+country & Count\_Variable \\
+\midrule()
+\endfirsthead
+\toprule()
+country & Count\_Variable \\
+\midrule()
+\endhead
+Austria & 1 \\
+Brazil & 2 \\
+Germany & 1 \\
+\bottomrule()
+\end{longtable}
+
+Certainly, counting is not the only function. We can estimate the mean
+average with \texttt{AVG()}. And now the average, little SQL monkey!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT}\NormalTok{ country, }\FunctionTok{AVG}\NormalTok{(z) }\KeywordTok{as}\NormalTok{ Mean }\KeywordTok{from}\NormalTok{ df }\KeywordTok{group} \KeywordTok{by}\NormalTok{ country;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{3 records}\tabularnewline
+\toprule()
+country & Mean \\
+\midrule()
+\endfirsthead
+\toprule()
+country & Mean \\
+\midrule()
+\endhead
+Austria & 8.5 \\
+Brazil & 3.0 \\
+Germany & 3.6 \\
+\bottomrule()
+\end{longtable}
+
+We can set a further conditions with a grouped by clause and add the
+\texttt{HAVING} option. As the next output shows, the
+\texttt{group\ by\ country\ HAVING\ count\ (country)\ \textgreater{}\ 1}
+returns only countries with more than one observation counted:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{SELECT}\NormalTok{ country, }\FunctionTok{count}\NormalTok{ (country) }\KeywordTok{AS} \FunctionTok{Count} \KeywordTok{from}\NormalTok{ df }\KeywordTok{group} \KeywordTok{by}\NormalTok{ country }\KeywordTok{having} \FunctionTok{count}\NormalTok{ (country) }\OperatorTok{\textgreater{}} \DecValTok{1}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+country & Count \\
+\midrule()
+\endfirsthead
+\toprule()
+country & Count \\
+\midrule()
+\endhead
+Brazil & 2 \\
+\bottomrule()
+\end{longtable}
+
+Let us try to remember that the \texttt{WHERE}clause is for entire
+result set; while \texttt{HAVING} works only for the
+\texttt{GROUPED\ BY} clause.
+
+Congratulations! At this point you are able to:
+
+\begin{itemize}
+\tightlist
+\item
+  Use the \texttt{WHERE} clause to refine your query results
+\item
+  Use the wildcard character (\texttt{\%}) as a substitute for unknown
+  characters in a pattern
+\item
+  Use \texttt{BETWEEN} \ldots{} \texttt{AND} to specify a range of
+  numbers
+\item
+  We can sort query results into ascending or descending order, by using
+  the \texttt{ORDER\ BY} clause
+\item
+  And we can group query results by using the \texttt{GROUP\ BY} clause.
+\end{itemize}
+
+\hypertarget{built-in-database-functions}{%
+\section{Built-in Database
+Functions}\label{built-in-database-functions}}
+
+We saw in the last section that we can aggregate (count, avg) data and
+use column functions. Most of the basic statistics functions (sum, avg,
+min, max) are available and we can specify further conditions, for
+instance, if we want to summarize groups:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \FunctionTok{sum}\NormalTok{(mpg) }\KeywordTok{as}\NormalTok{ sum\_mpg }\KeywordTok{from}\NormalTok{ mtcars }\KeywordTok{where}\NormalTok{ hp }\OperatorTok{\textgreater{}} \DecValTok{100}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}r@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+sum\_mpg \\
+\midrule()
+\endfirsthead
+\toprule()
+sum\_mpg \\
+\midrule()
+\endhead
+401.4 \\
+\bottomrule()
+\end{longtable}
+
+Or we may use the scalar function and round to the nearest integer:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \FunctionTok{round}\NormalTok{(drat, }\DecValTok{1}\NormalTok{) }\KeywordTok{as}\NormalTok{ round\_drat }\KeywordTok{from}\NormalTok{ mtcars}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}r@{}}
+\caption{Displaying records 1 - 10}\tabularnewline
+\toprule()
+round\_drat \\
+\midrule()
+\endfirsthead
+\toprule()
+round\_drat \\
+\midrule()
+\endhead
+3.9 \\
+3.9 \\
+3.9 \\
+3.1 \\
+3.2 \\
+2.8 \\
+3.2 \\
+3.7 \\
+3.9 \\
+3.9 \\
+\bottomrule()
+\end{longtable}
+
+In SQL, there is a class of scalar functions. For instance, we can
+calculate the length of a string:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \FunctionTok{length}\NormalTok{(country) }\KeywordTok{from}\NormalTok{ df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}r@{}}
+\caption{4 records}\tabularnewline
+\toprule()
+length(country) \\
+\midrule()
+\endfirsthead
+\toprule()
+length(country) \\
+\midrule()
+\endhead
+7 \\
+7 \\
+6 \\
+6 \\
+\bottomrule()
+\end{longtable}
+
+Depending the SQL database you use, in db2 you can use the upper (UCASE)
+and lower case (LCASE) function for strings.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \FunctionTok{upper}\NormalTok{(country) }\KeywordTok{from}\NormalTok{ df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}l@{}}
+\caption{4 records}\tabularnewline
+\toprule()
+upper(country) \\
+\midrule()
+\endfirsthead
+\toprule()
+upper(country) \\
+\midrule()
+\endhead
+GERMANY \\
+AUSTRIA \\
+BRAZIL \\
+BRAZIL \\
+\bottomrule()
+\end{longtable}
+
+In case of Oracle the functions are called lower and upper.
+
+\hypertarget{date-and-time-built-in-functions}{%
+\subsection{Date and Time Built-in
+Functions}\label{date-and-time-built-in-functions}}
+
+Talking about SQL databases, there are three different possibilities to
+work with date and time DB2.\\
+- Date: \emph{YYYYMMDD} (Year/Month/Day) - Time: \emph{HHMMSS}
+(Hours/Min/Sec) - Timestamp: \emph{YYYYMMDDHHMMSSZZZZZZ}
+(Date/Time/Microseconds)
+
+Depending on what you are up to do, there are functions to extract the
+day, month, day of month, day of week, day of year, week, hour, minute,
+and second. You can also extract the \texttt{current\_date} and the
+\texttt{current\_time}. Unfortunately, this does not work in Oracle the
+same way as in DB2, but to give you an example how to extract the day:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \DataTypeTok{day}\NormalTok{(}\DataTypeTok{date}\NormalTok{) }\KeywordTok{from}\NormalTok{ df }\KeywordTok{where}\NormalTok{ country }\OperatorTok{=} \StringTok{\textquotesingle{}Germany\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{sub-queries-and-nested-selects}{%
+\subsection{Sub-Queries and Nested
+Selects}\label{sub-queries-and-nested-selects}}
+
+Sub-queries or sub selects are like regular queries but placed within
+parentheses and nested inside another query. This allows you to form
+more powerful queries than would have been otherwise possible. An
+example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \FunctionTok{avg}\NormalTok{(mpg) }\KeywordTok{from}\NormalTok{ mtcars}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}r@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+avg(mpg) \\
+\midrule()
+\endfirsthead
+\toprule()
+avg(mpg) \\
+\midrule()
+\endhead
+20.09062 \\
+\bottomrule()
+\end{longtable}
+
+Let's say we want to select only the observations with higher values
+than the average of mpg:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ mtcars }\KeywordTok{where}\NormalTok{ mpg }\OperatorTok{\textgreater{}} \FunctionTok{avg}\NormalTok{(mpg)}
+\end{Highlighting}
+\end{Shaded}
+
+This would produce the following error:
+\texttt{misuse\ of\ aggregate\ function\ avg()\ Failed\ to\ execute\ SQL\ chunk}.
+One of the limitations of built in aggregate functions, like avg(), is
+that they cannot be evaluated in the WHERE clause always. Thus, we have
+to use sub-queries.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ mtcars }\KeywordTok{where}\NormalTok{ mpg }\OperatorTok{\textgreater{}}
+\NormalTok{  (}\KeywordTok{select} \FunctionTok{avg}\NormalTok{(mpg) }\KeywordTok{from}\NormalTok{ mtcars);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrrrrrrrrrr@{}}
+\caption{Displaying records 1 - 10}\tabularnewline
+\toprule()
+mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
+\midrule()
+\endfirsthead
+\toprule()
+mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
+\midrule()
+\endhead
+21.0 & 6 & 160.0 & 110 & 3.90 & 2.620 & 16.46 & 0 & 1 & 4 & 4 \\
+21.0 & 6 & 160.0 & 110 & 3.90 & 2.875 & 17.02 & 0 & 1 & 4 & 4 \\
+22.8 & 4 & 108.0 & 93 & 3.85 & 2.320 & 18.61 & 1 & 1 & 4 & 1 \\
+21.4 & 6 & 258.0 & 110 & 3.08 & 3.215 & 19.44 & 1 & 0 & 3 & 1 \\
+24.4 & 4 & 146.7 & 62 & 3.69 & 3.190 & 20.00 & 1 & 0 & 4 & 2 \\
+22.8 & 4 & 140.8 & 95 & 3.92 & 3.150 & 22.90 & 1 & 0 & 4 & 2 \\
+32.4 & 4 & 78.7 & 66 & 4.08 & 2.200 & 19.47 & 1 & 1 & 4 & 1 \\
+30.4 & 4 & 75.7 & 52 & 4.93 & 1.615 & 18.52 & 1 & 1 & 4 & 2 \\
+33.9 & 4 & 71.1 & 65 & 4.22 & 1.835 & 19.90 & 1 & 1 & 4 & 1 \\
+21.5 & 4 & 120.1 & 97 & 3.70 & 2.465 & 20.01 & 1 & 0 & 3 & 1 \\
+\bottomrule()
+\end{longtable}
+
+Colum expressions help to set sub queries as a list of columns. Say we
+select variable Z:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{ country, z }\KeywordTok{from}\NormalTok{ df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{4 records}\tabularnewline
+\toprule()
+country & z \\
+\midrule()
+\endfirsthead
+\toprule()
+country & z \\
+\midrule()
+\endhead
+Germany & 3.6 \\
+Austria & 8.5 \\
+Brazil & 2.5 \\
+Brazil & 3.5 \\
+\bottomrule()
+\end{longtable}
+
+And in the next step we add the average of all countries:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{ country, z, }\FunctionTok{avg}\NormalTok{(z) }\KeywordTok{as}\NormalTok{ avg\_Z }\KeywordTok{from}\NormalTok{ df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrr@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+country & z & avg\_Z \\
+\midrule()
+\endfirsthead
+\toprule()
+country & z & avg\_Z \\
+\midrule()
+\endhead
+Germany & 3.6 & 4.525 \\
+\bottomrule()
+\end{longtable}
+
+This is obviously wrong. We cannot calculate on micro and macro level
+the same time, but we could use a sub-query (also called table
+expressions) to achieve it:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select}\NormalTok{ country, z, (}\KeywordTok{select} \FunctionTok{avg}\NormalTok{(z) }\KeywordTok{from}\NormalTok{ df }\KeywordTok{group} \KeywordTok{by}\NormalTok{ country) }\KeywordTok{as}\NormalTok{ avg\_Z }\KeywordTok{from}\NormalTok{ df}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrr@{}}
+\caption{4 records}\tabularnewline
+\toprule()
+country & z & avg\_Z \\
+\midrule()
+\endfirsthead
+\toprule()
+country & z & avg\_Z \\
+\midrule()
+\endhead
+Germany & 3.6 & 8.5 \\
+Austria & 8.5 & 8.5 \\
+Brazil & 2.5 & 8.5 \\
+Brazil & 3.5 & 8.5 \\
+\bottomrule()
+\end{longtable}
+
+Sub-queries can also be applied in the from clause. They are called
+derived tables or table expressions, because the outer query uses the
+results of the sub-query as a data source
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ (}\KeywordTok{select}\NormalTok{ hp, vs }\KeywordTok{from}\NormalTok{ mtcars);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rr@{}}
+\caption{Displaying records 1 - 10}\tabularnewline
+\toprule()
+hp & vs \\
+\midrule()
+\endfirsthead
+\toprule()
+hp & vs \\
+\midrule()
+\endhead
+110 & 0 \\
+110 & 0 \\
+93 & 1 \\
+110 & 1 \\
+175 & 0 \\
+105 & 1 \\
+245 & 0 \\
+62 & 1 \\
+95 & 1 \\
+123 & 1 \\
+\bottomrule()
+\end{longtable}
+
+\hypertarget{working-with-multiple-tables}{%
+\subsection{Working with Multiple
+Tables}\label{working-with-multiple-tables}}
+
+There are several ways to access multiple tables in the same query.
+Namely, using sub-queries, implicit join, and join operators, such as
+\texttt{INNER\ JOIN} and \texttt{OUTER\ JOIN}. For instance:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ df2;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrr@{}}
+\caption{2 records}\tabularnewline
+\toprule()
+country & valid & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & valid & id \\
+\midrule()
+\endhead
+Germany & 1 & 1 \\
+Austria & 0 & 2 \\
+\bottomrule()
+\end{longtable}
+
+Let's say we want only observations from df that are listed in df2. In
+such a situation we can use a sub-queries:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ df}
+  \KeywordTok{where}\NormalTok{ country }\KeywordTok{in}
+\NormalTok{  (}\KeywordTok{select}\NormalTok{ country }\KeywordTok{from}\NormalTok{ df2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{2 records}\tabularnewline
+\toprule()
+country & y & z & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id \\
+\midrule()
+\endhead
+Germany & 2 & 3.6 & 1 \\
+Austria & 1 & 8.5 & 2 \\
+\bottomrule()
+\end{longtable}
+
+Of course, you could add also information of the second table and
+include only countries with a certain value:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ df}
+  \KeywordTok{where}\NormalTok{ country }\KeywordTok{in}
+\NormalTok{  (}\KeywordTok{select}\NormalTok{ country }\KeywordTok{from}\NormalTok{ df2 }\KeywordTok{where}\NormalTok{ valid }\OperatorTok{=} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\caption{1 records}\tabularnewline
+\toprule()
+country & y & z & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id \\
+\midrule()
+\endhead
+Germany & 2 & 3.6 & 1 \\
+\bottomrule()
+\end{longtable}
+
+Implicit joins implies that we can access multiple tables by specifying
+them in the \texttt{FROM} clause of the query. This leads to a CROSS
+JOIN (also known as Cartesian Join).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ df, df2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrrlrr@{}}
+\caption{8 records}\tabularnewline
+\toprule()
+country & y & z & id & country & valid & id \\
+\midrule()
+\endfirsthead
+\toprule()
+country & y & z & id & country & valid & id \\
+\midrule()
+\endhead
+Germany & 2 & 3.6 & 1 & Germany & 1 & 1 \\
+Germany & 2 & 3.6 & 1 & Austria & 0 & 2 \\
+Austria & 1 & 8.5 & 2 & Germany & 1 & 1 \\
+Austria & 1 & 8.5 & 2 & Austria & 0 & 2 \\
+Brazil & 4 & 2.5 & 3 & Germany & 1 & 1 \\
+Brazil & 4 & 2.5 & 3 & Austria & 0 & 2 \\
+Brazil & 3 & 3.5 & 3 & Germany & 1 & 1 \\
+Brazil & 3 & 3.5 & 3 & Austria & 0 & 2 \\
+\bottomrule()
+\end{longtable}
+
+In DBL2 we can use the where clause to match data (see code); in Oracle
+there are other matching operaters
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ df, df2 }\KeywordTok{where}\NormalTok{ df.}\KeywordTok{id} \OperatorTok{=}\NormalTok{ df.}\KeywordTok{id}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+In case of long names, we can use shorter aliases for table names (or
+use column names with aliases in the SELECT clause):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{select} \OperatorTok{*} \KeywordTok{from}\NormalTok{ df A, df2 B }\KeywordTok{where}\NormalTok{ A.}\KeywordTok{id} \OperatorTok{=}\NormalTok{ B.}\KeywordTok{id}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{summary}{%
+\section{Summary}\label{summary}}
+
+\begin{itemize}
+\item
+  Most databases come with built-in functions that you can use in SQL
+  statements to perform operations on data within the database itself.
+\item
+  When you work with large datasets, you may save time by using built-in
+  functions rather than first retrieving the data into your application
+  and then executing functions on the retrieved data.
+\item
+  Use sub-queries to form more powerful queries.
+\item
+  A sub-select expression helps to evaluate some built-in aggregate
+  functions like the average function.
+\item
+  Derived tables or table expressions are sub-queries where the outer
+  query uses the results of the sub-query as a data source.
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
+
+\markboth{References}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{0}{0}
+\end{CSLReferences}
+
+
+
+\end{document}
