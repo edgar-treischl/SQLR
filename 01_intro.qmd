@@ -31,9 +31,46 @@ dbWriteTable(con, "df", df)
 dbListTables(con)
 ```
 
-The biggest mistake trying to learn SQL first. If you ever opened a book that introduces SQL (or any other programming language) to will find several chapters that outline you what SQL (structured query language) is. An explanation from the Wikipedia page should be sufficient: "SQL a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)". Thus, in a nutshell we can remember that SQL is a language to manage data (tables) in databases. The next chapters shows you how to setup the corresponding software and the database. I'll not do that in this blog because setting up a database on your own computer does not make much sense because there are easier ways for the first steps in SQL especially if you are a R user.
+The biggest mistake trying to learn SQL first. If you ever opened a book that introduces SQL (or any other programming language) to will find several chapters that outline what SQL (structured query language) is. An explanation from the Wikipedia page should be sufficient: "SQL a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), or for stream processing in a relational data stream management system (RDSMS)". Thus, in a nutshell we can remember that SQL is a language to manage data (tables) in databases. 
 
-In case you do not have access to a SQL database: This page was built with `RMarkdown` and includes some SQL snippets with the `DBI` package. All you have to do is install the package, setup the connection and include your SQL code directly in your RMarkdown document or your R script. Thus, in our case there is no database installed, we can make use of the the local memory to simulate a database, save a table (data frame) and run SQL commands directly as a code chunk via our R script. Checkout the databases page from [RStudio](https://db.rstudio.com/dbi/) for more information. Furthermore, I hope you are familiar with the `mtcars` and the `iris` data if you want to reproduce these first SQL steps. Both are implemented in R, but it does not matter if you not familiar with these data sets. I picked them because a lot of people know them and this blog shows you the first basic SQL commands how retrieve and work with data.
+The next chapters of a typical introduction shows you how to setup the software and the database. I'll skip this step because setting up a database on your own computer does not make much sense and there are smarter ways to learn the first steps if you are a R user. For example, this website includes SQL code and output but this does not imply that I have connected to a database. Instead we can use R packages such as `DBI` to setup the connection and include your SQL code directly in your RMarkdown document or an R script. There is no need for a database in the beginning, we can make use of the the *local memory* to simulate a database, save a table (data frame) and run SQL commands directly as a code chunk from the R script. Consider the next console, it shows SQL code to select a variable from a data set as an example.
+
+```{sql connection=con, eval = FALSE}
+SELECT VAR FROM data;
+```
+
+
+To run this code from R without a database, we need to establish a local connection (`con`), writte the data into the local data base with `dbWriteTable()`. The next console shows how it works. 
+
+```{r, eval=FALSE}
+library(DBI)
+library(RSQLite)
+
+# Create in-memory RSQLite database
+con <- dbConnect(drv = RSQLite::SQLite(), 
+                 dbname = ":memory:")
+
+#Write a table into the data base
+dbWriteTable(conn = con, 
+             name = "mtcars", 
+             value = mtcars)
+```
+
+I hope you are familiar with the `mtcars` and the `iris` data if you want to reproduce these first SQL steps. Both are implemented in R and in this chapter we explore first SQL commands with this data. To this end, you need to insert a table into the data base. As the last console for the `mtcars` data highlighted. The `dbListTables()` functions lists all loaded tables of the used data base.
+
+```{r}
+dbListTables(con)
+```
+
+After we have made a connection and the data is available, the `sqldf` package let us run SQL code from R.
+
+```{r, warning=FALSE, message=FALSE}
+#Run SQL code from R
+library(sqldf)
+sqldf('SELECT * FROM mtcars LIMIT 5;')
+```
+
+Thus, such R packages increases your learning curve substanially, since we can establish a data base and try some SQL code without any other equipment than your local machine. In Chapter XX we will establish a connection to a SQL data base, but for the moment there is no need to. The remaining part of this chapter shows first SQL commands.
 
 ## Select
 
@@ -52,7 +89,7 @@ SELECT mpg, disp FROM mtcars LIMIT 5;
 ```
 
 -   You can also insert a starting point that skips some observations. For instance, `OFFSET 10` will skip the first ten table entries
--   You must use quotations marks if the column contains special characters (like `'Petal.Width'` from iris data)
+-   Use quotations marks if the column contains special characters (like `'Petal.Width'` from iris data)
 
 ## Where
 
@@ -85,7 +122,7 @@ SELECT COUNT(am) FROM mtcars WHERE am != 0;
 
 ## DISTINCT
 
--   `Distinct` can be used to find distinct values. For instance, there are three different Species in the iris data, and distinct helps you to distract them:
+-   `Distinct` can be used to find distinct values. For instance, there are three different species in the iris data:
 
 ```{sql connection=con}
 SELECT DISTINCT Species FROM iris
@@ -157,7 +194,7 @@ DELETE from df WHERE x = 'b';
 SELECT * FROM df;
 ```
 
-In summary, in SQL we have to select a table from the database, specify conditions with the where clause. We can use count and distinct to get a first impression of the data. Furthermore, it is all about table. Sometimes we have to insert values, a really vague concept if you are use to work with data, but from a SQL you give your database a update, you are really right in front of the data or imagine that stream of new data needs an update. If that something you have to get used to it, don't be afraid, me too.
+In summary, we have to select a table from the database, specify conditions with the where clause and we can use count to get a first impression of the data. We saw how to insert values, a really vague concept if you are used to work with data, but from a SQL perspective you give the database a update or imagine that a stream of new data needs an update. If SQL seems like something you have to get used to it, don't be afraid, me too.
 
 
 

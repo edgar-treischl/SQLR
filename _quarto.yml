@@ -4,8 +4,9 @@ project:
 
 book:
   title: "Learning SQL the Badass Way"
-  author: "Edgar Treischl"
-  date: "4/29/2023"
+  author: "Edgar J. Treischl"
+  reader-mode: true
+  repo-url: https://github.com/hadley/r4ds/
   chapters:
     - "index.qmd"
     - "01_intro.qmd"
@@ -13,6 +14,8 @@ book:
     - "03_calculations.qmd"
     - "06_cheat.qmd"
     - "references.qmd"
+    
+
 
 
 bibliography: references.bib
