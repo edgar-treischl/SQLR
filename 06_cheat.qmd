@@ -1,0 +1,467 @@
+# Cheats
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+df <- tribble(
+  ~x, ~y,  ~z,
+  "a", 2,  3.6,
+  "b", 1,  8.5
+)
+df
+
+#df <- as.data.frame(df)
+
+
+library(DBI)
+#library(klippy)
+
+# Create an ephemeral in-memory RSQLite database
+con <- dbConnect(drv = RSQLite::SQLite(), 
+                 dbname = ":memory:")
+
+dbListTables(con)
+dbWriteTable(conn = con, 
+             name = "mtcars", 
+             value = mtcars)
+dbWriteTable(con, "iris", iris)
+dbWriteTable(con, "df", df)
+dbListTables(con)
+```
+
+This is the cheat sheet section of this book. It only shows example code for a copy and paste apporach for each chapter.
+
+## Introduction
+
+### Select
+
+SELECT statement is used to fetch data from a database.
+
+```{sql connection=con}
+SELECT * FROM mtcars;
+```
+
+
+
+### Where
+
+WHERE clause is used to extract only those records that fulfill a condition.
+
+```{sql connection=con}
+SELECT * FROM mtcars WHERE am = 0 LIMIT 5;
+```
+
+
+### Count
+
+COUNT takes the name of a column as argument and counts the number of rows when the column is not NULL.
+
+```{sql connection=con}
+SELECT COUNT(*) FROM mtcars;
+```
+
+
+### DISTINCT
+
+Get unique values in specified columns.
+
+```{sql connection=con}
+SELECT DISTINCT Species FROM iris
+```
+
+
+
+### Insert Values
+
+Insert new rows in the table.
+
+```{r, echo=TRUE}
+library(tidyverse)
+
+df <- tribble(
+  ~x, ~y,  ~z,
+  "a", 2,  3.6,
+  "b", 1,  8.5
+)
+df
+```
+
+Now, we can insert new values into `df`.
+
+```{sql connection=con}
+INSERT INTO df (x, y, z) VALUES('c', 3, 1);
+SELECT * FROM df;
+```
+
+
+### Updates
+
+Update the rows in the table.
+
+```{sql connection=con}
+UPDATE df SET z = 77 WHERE x ='b';
+```
+
+
+
+### Delete
+
+Remove rows from the table which are specified in the WHERE condition.
+
+```{sql connection=con}
+DELETE from df WHERE x = 'b';
+```
+
+
+## Data management
+
+### Create table
+
+Each column in the table is specified with its name, data type and an optional keyword which could be PRIMARY KEY, NOT NULL, etc., 
+
+```{sql connection=con}
+CREATE TABLE PETSALE (
+    ID INTEGER NOT NULL,
+    PET CHAR(20),
+    SALEPRICE DECIMAL(6,2),
+    PROFIT DECIMAL(6,2),
+    SALEDATE DATE
+    );
+```
+
+
+INSERT INTO fills the table:
+
+```{sql connection=con}
+INSERT INTO PETSALE VALUES
+    (1,'Cat',450.09,100.47,'2018-05-29'),
+    (2,'Dog',666.66,150.76,'2018-06-01'),
+    (3,'Parrot',50.00,8.9,'2018-06-04'),
+    (4,'Hamster',60.60,12,'2018-06-11'),
+    (5,'Goldfish',48.48,3.5,'2018-06-14');
+```
+
+
+
+### Alter table
+
+ADD COLUMN:
+
+```{sql connection=con}
+ALTER TABLE PETSALE
+ADD COLUMN QUANTITY INTEGER;
+```
+
+
+Fill in values:
+
+```{sql connection=con}
+UPDATE PETSALE SET QUANTITY = 9 WHERE ID = 1;
+```
+
+Check whether it worked
+
+```{sql connection=con}
+SELECT * FROM PETSALE;
+```
+
+
+DROP COLUMN:
+
+```{sql connection=con}
+ALTER TABLE PETSALE
+DROP COLUMN PROFIT;
+```
+
+```{sql connection=con}
+SELECT * FROM PETSALE;
+```
+
+
+ALTER COLUMN:
+
+```{sql connection=con, eval=FALSE}
+ALTER TABLE PETSALE
+ALTER COLUMN PET SET DATA TYPE VARCHAR(20);
+```
+
+```{sql connection=con}
+SELECT * FROM PETSALE;
+```
+
+
+RENAME COLUMN:
+
+```{sql connection=con}
+ALTER TABLE PETSALE
+RENAME COLUMN PET TO ANIMAL;
+```
+
+```{sql connection=con}
+SELECT * FROM PETSALE;
+```
+
+
+### Truncate
+
+The `TRUNCATE` statement will remove all(!) rows from an existing table, just like the one we created in the beginning, however, it does not delete the table itself.
+
+```{sql connection=con, eval=FALSE}
+TRUNCATE TABLE PET IMMEDIATE;
+```
+
+Caution: `DROP TABLE tablename;` drops the entire table!
+
+```{sql connection=con, eval=FALSE}
+DROP TABLE PETSALE;
+```
+
+
+## Calculations
+
+
+```{r setup2, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+
+library(tidyverse)
+
+df <- tribble(
+  ~country, ~y,  ~z, ~id,
+  "Germany", 2,  3.6, 1,
+  "Austria", 1,  8.5, 2,
+  "Brazil", 4,  2.5, 3,
+  "Brazil", 3,  3.5, 3
+)
+
+
+df2 <- tribble(
+  ~country, ~valid, ~id,
+  "Germany", 1, 1,
+  "Austria", 0, 2
+)
+
+
+library(DBI)
+
+# Create an ephemeral in-memory RSQLite database
+con <- dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+
+dbListTables(con)
+dbWriteTable(con, "mtcars", mtcars)
+dbWriteTable(con, "iris", iris)
+dbWriteTable(con, "df", df)
+dbWriteTable(con, "df2", df2)
+dbListTables(con)
+```
+
+
+
+
+
+
+For this subsection I created a simple table that contains attributes about countries: 
+
+```{sql connection=con}
+SELECT * FROM df ;
+```
+
+
+### Like
+
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+There are two wildcards often used in conjunction with the LIKE operator which are percent sign(%) and underscore sign (_).
+
+```{sql connection=con}
+SELECT * FROM df WHERE country LIKE 'A%';
+```
+
+
+### Between
+
+Select data within a range:
+
+```{sql connection=con}
+select * from mtcars
+where (hp BETWEEN 100 and 200) and AM = 1 ;
+
+```
+
+
+### In
+
+Use the IN operator to select observations that match the provided list of the `IN` operator:
+
+```{sql connection=con}
+SELECT * FROM df WHERE country IN ('Brazil');
+```
+
+  
+  
+### Order by
+
+ORDER BY is used to sort the result-set in ascending or descending order. The default is ascending. 
+
+```{sql connection=con}
+SELECT * FROM df ORDER BY country;
+```
+
+
+
+
+
+### Distinct
+
+Exclude duplicates with DISTINCT:
+
+```{sql connection=con}
+SELECT distinct(country) FROM df ;
+```
+
+### Group by
+
+GROUP BY is used in collaboration with SELECT to arrange identical data into groups.
+
+
+```{sql connection=con}
+SELECT country, count (country) AS Var_Name from df group by country;
+```
+
+
+
+### Average
+
+```{sql connection=con}
+SELECT country, AVG(z) as Mean from df group by country;
+```
+
+
+### Having
+
+The `WHERE`clause is for entire result set; while `HAVING` works only for the `GROUPED BY` clause.
+
+```{sql connection=con}
+SELECT country, count (country) AS Count from df group by country having count (country) > 1;
+```
+
+
+
+
+
+
+### Further functions
+
+Summarize groups:
+
+```{sql connection=con}
+select sum(mpg) as sum_mpg from mtcars where hp > 100
+```
+
+Round to the nearest integer:
+
+```{sql connection=con}
+select round(drat, 1) as round_drat from mtcars
+```
+
+The length of a string:
+
+
+```{sql connection=con}
+select length(country) from df
+```
+
+Depending the SQL database you use, in db2 you can use the upper (UCASE) and lower case (LCASE) function for strings.
+
+
+```{sql connection=con}
+select upper(country) from df
+```
+
+In case of Oracle the functions are called lower and upper. 
+
+
+### Date and Time Built-in Functions 
+
+Talking about SQL databases, there are three different possibilities to work with date and time DB2.   
+  - Date: *YYYYMMDD* (Year/Month/Day)
+  - Time: *HHMMSS* (Hours/Min/Sec)
+  - Timestamp: *YYYYMMDDHHMMSSZZZZZZ* (Date/Time/Microseconds)
+  
+Depending on what you are up to do, there are functions to extract the day, month, day of month, day of week, day of year, week, hour, minute, and second. You can also extract the `current_date` and the `current_time`. Unfortunately, this does not work in Oracle the same way as in DB2, but to give you an example how to extract the day:
+
+
+```{sql connection=con, eval = FALSE}
+select day(date) from df where country = 'Germany'
+```
+
+
+
+
+### Working with Multiple Tables
+
+There are several ways to access multiple tables in the same query. Namely, using sub-queries, implicit join, and join operators, such as `INNER JOIN` and `OUTER JOIN`. For instance:
+
+```{sql connection=con}
+select * from df2;
+```
+
+Let's say we want only observations from df that are listed in df2. In such a situation we can use a sub-queries:
+
+```{sql connection=con}
+select * from df
+  where country in
+  (select country from df2)
+```
+
+Of course, you could add also information of the second table and include only countries with a certain value:
+
+```{sql connection=con}
+select * from df
+  where country in
+  (select country from df2 where valid = 1)
+```
+
+Implicit joins implies that we can access multiple tables by specifying them in the `FROM` clause of the query. This leads to a CROSS JOIN (also known as Cartesian Join).
+
+```{sql connection=con}
+select * from df, df2
+```
+
+In DBL2 we can use the where clause to match data (see code); in Oracle there are other matching operaters
+
+```{sql connection=con, eval=FALSE}
+select * from df, df2 where df.id = df.id;
+```
+
+In case of long names, we can use shorter aliases for table names (or use column names with aliases in the SELECT clause):
+
+```{sql connection=con, eval=FALSE}
+select * from df A, df2 B where A.id = B.id;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

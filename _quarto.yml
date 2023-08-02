@@ -11,6 +11,7 @@ book:
     - "01_intro.qmd"
     - "02_data_management.qmd"
     - "03_calculations.qmd"
+    - "06_cheat.qmd"
     - "references.qmd"
 
 
