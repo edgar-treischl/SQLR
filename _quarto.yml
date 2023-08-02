@@ -6,7 +6,7 @@ book:
   title: "Learning SQL the Badass Way"
   author: "Edgar J. Treischl"
   reader-mode: true
-  repo-url: https://github.com/hadley/r4ds/
+  repo-url: https://github.com/edgar-treischl/SQLR
   chapters:
     - "index.qmd"
     - "01_intro.qmd"
