@@ -1,11 +1,10 @@
-*Learning SQL the badass way* is work in progress, keep that in mind if you start reading on these pages.
+*Learning SQL the badass way* is an unpublished manuscript which I started to summarize the content of an SQL course. Please keep that in mind when reading this book.
 
 # Preface {.unnumbered}
 
-Learning SQL the *badass way* shows you the basic commands to manage data with SQL. I wrote this manual because learning new things takes me a lot of time, but courses are often designed without taking my prior knowledge about data science into account. Can you imagine, I can read and write SQL even I have no idea how SQL really works and I guess you can too! For this reason I started to write this manual. It summarizes the content of the SQL IBM (EDx) course. 
+Learning SQL the *badass way* shows you the basic commands to manage data with SQL. I wrote this manual because learning new things takes me a lot of time and is often designed without taking our prior knowledge about data science into account. I started to learn SQL via an online course, but instead of digging myself into the applied side of handling data with SQL, I got a lot of information about SQL in general terms, data bases, and other related topics. However, I was able to read and to write SQL even when I had no prior experience working with SQL because I have a background in R (and Python) and SQL is not rocket science. Thus, this manual is the result from taking this course, which helps me when needed and it may help you to quickly learn SQL if you have a similiar background,
 
-It's a quick and dirty introduction into SQL for R Users: I assume that you are familiar with R to manipulate data. For this reason, I will skip many typical steps of a real introduction and certainly I will not explain why we need to wrangle data in the first place. This manual only summarizes main idiosyncrasies of SQL, not concepts that you probably know from any other programming experience. Please, close this manual if you want to learn SQL in a proper way. Go and attend a real course and  where are many books and other resources available. However, if you are bored from long introduction what data is, why we need to learn how to wrangle data or other common aspects that come along the data science journey, feel free to join me.
-
+The manual summarizes the content of the [IBM SQL for Data Science Course (from EDx)](https://www.edx.org/learn/data-science/ibm-sql-for-data-science?index=product&queryID=11d1c93eb92247c08dbc1d3b9d6a5c39&position=2&results_level=first-level-results&term=SQL&objectID=course-2b907cc6-4020-4242-a369-38a48ae95f83&campaign=SQL+for+Data+Science&source=edX&product_category=course&placement_url=https%3A%2F%2Fwww.edx.org%2Fsearch) based on own examples and data which I attained in 2022. It's a quick and dirty introduction for R Users: I assume that you are familiar with R and I will skip many typical steps of a real SQL introduction; certainly I will not explain why we need to wrangle data in the first place. This manual only summarizes main idiosyncrasies of SQL, not concepts that you probably know from any other programming experience. Please, close this manual if you want to learn SQL in a proper way. Go and attend a real course and where are many books and other resources available. However, if you are bored from long introduction what data is, why we need to learn how to wrangle data or other common aspects that come along the data science journey, feel free to join me.
 
 Learning SQL is beneficial but maybe we need more motivational input. ChatGTP gives us the following reasons why we should learn SQL even if you are fluent in a language such as R:
 
@@ -18,7 +17,6 @@ Learning SQL is beneficial but maybe we need more motivational input. ChatGTP gi
 -   *Advanced data manipulation*: SQL provides powerful features for data manipulation, including filtering, sorting, aggregating and joining data from multiple tables. By learning SQL, R users can take advantage of these advanced features to manipulate their data in more sophisticated ways.
 
 -   *Job market demand*: SQL is a widely used skill in the data analytics job market. By learning SQL, R users can broaden their skillset and increase their job market competitiveness.
-
 
 ChatGTP also helps us to get an overview about the most important R packages that are commonly used for working with SQL, including:
 
@@ -36,10 +34,10 @@ ChatGTP also helps us to get an overview about the most important R packages tha
 
 Overall, the choice of which package to use will depend on the specific database you're working with and your preferred interface. However, these packages should provide a good starting point for working with SQL in R and I will outline more about each package soon. Before we start can start with SQL, let us set the scope of this manual:
 
-- Chapter 1 introduces the basics SQL commands and shows you how to run SQl queries from the R console.
+-   Chapter 1 introduces the basics SQL commands and shows you how to run SQl queries from the R console.
 
-- Chapter 2 elaborates on SQL knowledge in terms of data management and  introduces, for example, two different types of SQL statements.
+-   Chapter 2 elaborates on SQL knowledge in terms of data management and introduces, for example, two different types of SQL statements.
 
-- Chapter 3 shows how basic calculations are done in SQL: We can sort and group data or work with multiple tables. 
+-   Chapter 3 shows how basic calculations are done in SQL: We can sort and group data or work with multiple tables.
 
-- Chapter 4 is only a cheat sheet. It shows all introduced SQL commands based on a simple code snippets. By doing so, we can copy and paste the code if needed.
+-   Chapter 4 is a cheat sheet. It repeats all introduced SQL commands based on a simple code snippets. By doing so, we can copy and paste the code if needed.

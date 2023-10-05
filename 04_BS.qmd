@@ -53,3 +53,24 @@ SELECT * FROM df ;
 
 ## String values, Ranges and SET of values
 
+```{sql connection=con}
+CREATE VIEW cars AS 
+SELECT mpg
+FROM mtcars; 
+```
+
+```{sql connection=con}
+SELECT * FROM cars
+```
+
+
+```{sql connection=con}
+DROP VIEW cars;
+```
+
+
+
+
+
+
+
